@@ -1,0 +1,33 @@
+services:
+  db:
+    container_name: db
+    image: postgres:16
+    volumes:
+      - ./:/app/
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+
+  loader:
+    container_name: loader
+    image: python:3.10-bookworm
+    volumes:
+      - ./:/app/
+    env_file:
+      - .env
+    entrypoint: ["bash"]
+    stdin_open: true
+    tty: true
+
+
+  dev-space:
+    container_name: dev-space
+    image: golang:1.24-alpine
+    volumes:
+      - ./:/app/
+    entrypoint: ["sh"]
+    stdin_open: true
+    tty: true
+
+
