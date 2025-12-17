@@ -1,0 +1,21 @@
+syntax = "proto3";
+option go_package="search/proto/golang";
+
+message Game{
+    string home_team = 1;
+    string away_team = 2;
+    string gameday = 3;
+}
+
+message GetMatchRequest{
+    Game game_request = 1;
+  }
+
+message GetMatchResponse{
+  repeated Game games = 1;
+}
+
+
+service MatchSearchService{
+  rpc GetMatch(GetMatchRequest) returns (GetMatchResponse);
+}

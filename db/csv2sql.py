@@ -9,7 +9,7 @@ DB_PASSWORD = os.getenv('POSTGRES_PASSWORD')
 
 
 # Identify INT columns on the csv.
-FILE_COLUMNS_TYPE = {'LeagueSchedule25_26.csv': {"INT": ["*Id", "*Number"], "DATE": ["gameDateTimeEst"]},
+FILE_COLUMNS_TYPE = {'LeagueSchedule25_26.csv': {"INT": ["*Id"], "DATE": ["gameDateTimeEst"]},
                      'LeagueSchedule24_25.csv': {"INT": ["*Id", "*Number"], "DATE": ["gameDateTimeEst"]}}
 
 
