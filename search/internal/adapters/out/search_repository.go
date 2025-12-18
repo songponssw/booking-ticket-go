@@ -28,7 +28,7 @@ func (r *SearchRepository) Search(
 
 	rows, err := r.db.QueryContext(
 		ctx,
-		`SELECT hometeamname, awayteamname,  
+		`SELECT hometeamname, awayteamname  
 		 FROM leagueschedule25_26
 		 WHERE hometeamname ILIKE '%' || $1 || '%'`,
 		query.HomeTeam,

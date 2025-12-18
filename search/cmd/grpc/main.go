@@ -6,16 +6,16 @@ import (
 
 	"google.golang.org/grpc"
 
-	pb "search/proto"
-	grpcAdapter "search/internal/adapters/in/grpc"
-	postgresAdapter "search/internal/adapters/out/postgres"
+	pb "search/proto/golang"
+	grpcAdapter "search/internal/adapters/in"
+	postgresAdapter "search/internal/adapters/out"
 	appService "search/internal/application/service"
-	infraPostgres "search/internal/infrastructure/postgres"
+	infraPostgres "search/internal/infra"
 )
 
 func main() {
 	db, err := infraPostgres.NewDB(
-		"postgres://user:pass@localhost/searchdb?sslmode=disable",
+		"postgres://user:pass@db/mydb?sslmode=disable",
 	)
 	if err != nil {
 		log.Fatal(err)

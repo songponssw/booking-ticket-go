@@ -19,101 +19,101 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	MatchSearchService_GetMatch_FullMethodName = "/MatchSearchService/GetMatch"
+	SearchService_SearchGame_FullMethodName = "/SearchService/SearchGame"
 )
 
-// MatchSearchServiceClient is the client API for MatchSearchService service.
+// SearchServiceClient is the client API for SearchService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type MatchSearchServiceClient interface {
-	GetMatch(ctx context.Context, in *GetMatchRequest, opts ...grpc.CallOption) (*GetMatchResponse, error)
+type SearchServiceClient interface {
+	SearchGame(ctx context.Context, in *SearchGameRequest, opts ...grpc.CallOption) (*SearchGameResponse, error)
 }
 
-type matchSearchServiceClient struct {
+type searchServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewMatchSearchServiceClient(cc grpc.ClientConnInterface) MatchSearchServiceClient {
-	return &matchSearchServiceClient{cc}
+func NewSearchServiceClient(cc grpc.ClientConnInterface) SearchServiceClient {
+	return &searchServiceClient{cc}
 }
 
-func (c *matchSearchServiceClient) GetMatch(ctx context.Context, in *GetMatchRequest, opts ...grpc.CallOption) (*GetMatchResponse, error) {
+func (c *searchServiceClient) SearchGame(ctx context.Context, in *SearchGameRequest, opts ...grpc.CallOption) (*SearchGameResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetMatchResponse)
-	err := c.cc.Invoke(ctx, MatchSearchService_GetMatch_FullMethodName, in, out, cOpts...)
+	out := new(SearchGameResponse)
+	err := c.cc.Invoke(ctx, SearchService_SearchGame_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// MatchSearchServiceServer is the server API for MatchSearchService service.
-// All implementations must embed UnimplementedMatchSearchServiceServer
+// SearchServiceServer is the server API for SearchService service.
+// All implementations must embed UnimplementedSearchServiceServer
 // for forward compatibility.
-type MatchSearchServiceServer interface {
-	GetMatch(context.Context, *GetMatchRequest) (*GetMatchResponse, error)
-	mustEmbedUnimplementedMatchSearchServiceServer()
+type SearchServiceServer interface {
+	SearchGame(context.Context, *SearchGameRequest) (*SearchGameResponse, error)
+	mustEmbedUnimplementedSearchServiceServer()
 }
 
-// UnimplementedMatchSearchServiceServer must be embedded to have
+// UnimplementedSearchServiceServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedMatchSearchServiceServer struct{}
+type UnimplementedSearchServiceServer struct{}
 
-func (UnimplementedMatchSearchServiceServer) GetMatch(context.Context, *GetMatchRequest) (*GetMatchResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method GetMatch not implemented")
+func (UnimplementedSearchServiceServer) SearchGame(context.Context, *SearchGameRequest) (*SearchGameResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SearchGame not implemented")
 }
-func (UnimplementedMatchSearchServiceServer) mustEmbedUnimplementedMatchSearchServiceServer() {}
-func (UnimplementedMatchSearchServiceServer) testEmbeddedByValue()                            {}
+func (UnimplementedSearchServiceServer) mustEmbedUnimplementedSearchServiceServer() {}
+func (UnimplementedSearchServiceServer) testEmbeddedByValue()                       {}
 
-// UnsafeMatchSearchServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to MatchSearchServiceServer will
+// UnsafeSearchServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to SearchServiceServer will
 // result in compilation errors.
-type UnsafeMatchSearchServiceServer interface {
-	mustEmbedUnimplementedMatchSearchServiceServer()
+type UnsafeSearchServiceServer interface {
+	mustEmbedUnimplementedSearchServiceServer()
 }
 
-func RegisterMatchSearchServiceServer(s grpc.ServiceRegistrar, srv MatchSearchServiceServer) {
-	// If the following call panics, it indicates UnimplementedMatchSearchServiceServer was
+func RegisterSearchServiceServer(s grpc.ServiceRegistrar, srv SearchServiceServer) {
+	// If the following call panics, it indicates UnimplementedSearchServiceServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&MatchSearchService_ServiceDesc, srv)
+	s.RegisterService(&SearchService_ServiceDesc, srv)
 }
 
-func _MatchSearchService_GetMatch_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetMatchRequest)
+func _SearchService_SearchGame_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SearchGameRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MatchSearchServiceServer).GetMatch(ctx, in)
+		return srv.(SearchServiceServer).SearchGame(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: MatchSearchService_GetMatch_FullMethodName,
+		FullMethod: SearchService_SearchGame_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MatchSearchServiceServer).GetMatch(ctx, req.(*GetMatchRequest))
+		return srv.(SearchServiceServer).SearchGame(ctx, req.(*SearchGameRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// MatchSearchService_ServiceDesc is the grpc.ServiceDesc for MatchSearchService service.
+// SearchService_ServiceDesc is the grpc.ServiceDesc for SearchService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var MatchSearchService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "MatchSearchService",
-	HandlerType: (*MatchSearchServiceServer)(nil),
+var SearchService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "SearchService",
+	HandlerType: (*SearchServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetMatch",
-			Handler:    _MatchSearchService_GetMatch_Handler,
+			MethodName: "SearchGame",
+			Handler:    _SearchService_SearchGame_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

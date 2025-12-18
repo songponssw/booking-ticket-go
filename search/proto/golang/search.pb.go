@@ -25,7 +25,7 @@ type Game struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	HomeTeam      string                 `protobuf:"bytes,1,opt,name=home_team,json=homeTeam,proto3" json:"home_team,omitempty"`
 	AwayTeam      string                 `protobuf:"bytes,2,opt,name=away_team,json=awayTeam,proto3" json:"away_team,omitempty"`
-	Gameday       string                 `protobuf:"bytes,3,opt,name=gameday,proto3" json:"gameday,omitempty"`
+	GameDate      string                 `protobuf:"bytes,3,opt,name=game_date,json=gameDate,proto3" json:"game_date,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -74,34 +74,34 @@ func (x *Game) GetAwayTeam() string {
 	return ""
 }
 
-func (x *Game) GetGameday() string {
+func (x *Game) GetGameDate() string {
 	if x != nil {
-		return x.Gameday
+		return x.GameDate
 	}
 	return ""
 }
 
-type GetMatchRequest struct {
+type SearchGameRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	GameRequest   *Game                  `protobuf:"bytes,1,opt,name=game_request,json=gameRequest,proto3" json:"game_request,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetMatchRequest) Reset() {
-	*x = GetMatchRequest{}
+func (x *SearchGameRequest) Reset() {
+	*x = SearchGameRequest{}
 	mi := &file_search_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetMatchRequest) String() string {
+func (x *SearchGameRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetMatchRequest) ProtoMessage() {}
+func (*SearchGameRequest) ProtoMessage() {}
 
-func (x *GetMatchRequest) ProtoReflect() protoreflect.Message {
+func (x *SearchGameRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_search_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -113,39 +113,39 @@ func (x *GetMatchRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetMatchRequest.ProtoReflect.Descriptor instead.
-func (*GetMatchRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use SearchGameRequest.ProtoReflect.Descriptor instead.
+func (*SearchGameRequest) Descriptor() ([]byte, []int) {
 	return file_search_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *GetMatchRequest) GetGameRequest() *Game {
+func (x *SearchGameRequest) GetGameRequest() *Game {
 	if x != nil {
 		return x.GameRequest
 	}
 	return nil
 }
 
-type GetMatchResponse struct {
+type SearchGameResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Games         []*Game                `protobuf:"bytes,1,rep,name=games,proto3" json:"games,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetMatchResponse) Reset() {
-	*x = GetMatchResponse{}
+func (x *SearchGameResponse) Reset() {
+	*x = SearchGameResponse{}
 	mi := &file_search_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetMatchResponse) String() string {
+func (x *SearchGameResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetMatchResponse) ProtoMessage() {}
+func (*SearchGameResponse) ProtoMessage() {}
 
-func (x *GetMatchResponse) ProtoReflect() protoreflect.Message {
+func (x *SearchGameResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_search_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -157,12 +157,12 @@ func (x *GetMatchResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetMatchResponse.ProtoReflect.Descriptor instead.
-func (*GetMatchResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use SearchGameResponse.ProtoReflect.Descriptor instead.
+func (*SearchGameResponse) Descriptor() ([]byte, []int) {
 	return file_search_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *GetMatchResponse) GetGames() []*Game {
+func (x *SearchGameResponse) GetGames() []*Game {
 	if x != nil {
 		return x.Games
 	}
@@ -173,17 +173,18 @@ var File_search_proto protoreflect.FileDescriptor
 
 const file_search_proto_rawDesc = "" +
 	"\n" +
-	"\fsearch.proto\"Z\n" +
+	"\fsearch.proto\"]\n" +
 	"\x04Game\x12\x1b\n" +
 	"\thome_team\x18\x01 \x01(\tR\bhomeTeam\x12\x1b\n" +
-	"\taway_team\x18\x02 \x01(\tR\bawayTeam\x12\x18\n" +
-	"\agameday\x18\x03 \x01(\tR\agameday\";\n" +
-	"\x0fGetMatchRequest\x12(\n" +
-	"\fgame_request\x18\x01 \x01(\v2\x05.GameR\vgameRequest\"/\n" +
-	"\x10GetMatchResponse\x12\x1b\n" +
-	"\x05games\x18\x01 \x03(\v2\x05.GameR\x05games2E\n" +
-	"\x12MatchSearchService\x12/\n" +
-	"\bGetMatch\x12\x10.GetMatchRequest\x1a\x11.GetMatchResponseB\x15Z\x13search/proto/golangb\x06proto3"
+	"\taway_team\x18\x02 \x01(\tR\bawayTeam\x12\x1b\n" +
+	"\tgame_date\x18\x03 \x01(\tR\bgameDate\"=\n" +
+	"\x11SearchGameRequest\x12(\n" +
+	"\fgame_request\x18\x01 \x01(\v2\x05.GameR\vgameRequest\"1\n" +
+	"\x12SearchGameResponse\x12\x1b\n" +
+	"\x05games\x18\x01 \x03(\v2\x05.GameR\x05games2F\n" +
+	"\rSearchService\x125\n" +
+	"\n" +
+	"SearchGame\x12\x12.SearchGameRequest\x1a\x13.SearchGameResponseB\x15Z\x13search/proto/golangb\x06proto3"
 
 var (
 	file_search_proto_rawDescOnce sync.Once
@@ -199,15 +200,15 @@ func file_search_proto_rawDescGZIP() []byte {
 
 var file_search_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_search_proto_goTypes = []any{
-	(*Game)(nil),             // 0: Game
-	(*GetMatchRequest)(nil),  // 1: GetMatchRequest
-	(*GetMatchResponse)(nil), // 2: GetMatchResponse
+	(*Game)(nil),               // 0: Game
+	(*SearchGameRequest)(nil),  // 1: SearchGameRequest
+	(*SearchGameResponse)(nil), // 2: SearchGameResponse
 }
 var file_search_proto_depIdxs = []int32{
-	0, // 0: GetMatchRequest.game_request:type_name -> Game
-	0, // 1: GetMatchResponse.games:type_name -> Game
-	1, // 2: MatchSearchService.GetMatch:input_type -> GetMatchRequest
-	2, // 3: MatchSearchService.GetMatch:output_type -> GetMatchResponse
+	0, // 0: SearchGameRequest.game_request:type_name -> Game
+	0, // 1: SearchGameResponse.games:type_name -> Game
+	1, // 2: SearchService.SearchGame:input_type -> SearchGameRequest
+	2, // 3: SearchService.SearchGame:output_type -> SearchGameResponse
 	3, // [3:4] is the sub-list for method output_type
 	2, // [2:3] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name

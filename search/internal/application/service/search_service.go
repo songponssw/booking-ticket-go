@@ -2,7 +2,10 @@ package service
 
 import (
 	"context"
-	"search/application/domain"
+	"errors"
+	"search/internal/application/domain"
+	"search/internal/ports/in"
+	"search/internal/ports/out"
 )
 
 type SearchService struct {
@@ -14,8 +17,8 @@ func NewSearchService(repo out.SearchRepository) in.SearchUseCase {
 }
 
 func (s *SearchService) Search(ctx context.Context, queryGame domain.Game) ([]domain.Game, error) {
-	// bussiness rule: Rejest if all fields are null
-	if queryGame.HomeTeam == "" && queryGame.AwayTeam == "" & queryGame.GameDate == "" {
+	// bussiness rule: Reject if all fields are null
+	if queryGame.HomeTeam == "" && queryGame.AwayTeam == "" && queryGame.GameDate == "" {
 		return nil, errors.New("At least one fields should be provided")
 	}
 

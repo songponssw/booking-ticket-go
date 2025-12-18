@@ -20,16 +20,16 @@ func main() {
 	}
 	defer conn.Close()
 
-	client := searchpb.NewMatchSearchServiceClient(conn)
+	client := searchpb.NewSearchServiceClient(conn)
 
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
 
-	resp, err := client.GetMatch(ctx, &searchpb.GetMatchRequest{
+	resp, err := client.SearchGame(ctx, &searchpb.SearchGameRequest{
 		GameRequest: &searchpb.Game{
-			HomeTeam: "Arsenal",
-			AwayTeam: "Chelsea",
-			Gameday:  "2025-01-01",
+			HomeTeam: "Nuggets",
+			AwayTeam: "",
+			GameDate:  "",
 		},
 	})
 	if err != nil {

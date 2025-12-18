@@ -4,18 +4,18 @@ option go_package="search/proto/golang";
 message Game{
     string home_team = 1;
     string away_team = 2;
-    string gameday = 3;
+    string game_date = 3;
 }
 
-message GetMatchRequest{
+message SearchGameRequest{
     Game game_request = 1;
   }
 
-message GetMatchResponse{
+message SearchGameResponse{
   repeated Game games = 1;
 }
 
 
-service MatchSearchService{
-  rpc GetMatch(GetMatchRequest) returns (GetMatchResponse);
+service SearchService{
+  rpc SearchGame(SearchGameRequest) returns (SearchGameResponse);
 }
