@@ -1,4 +1,5 @@
 syntax = "proto3";
+package searchpb;
 option go_package="search/proto/golang";
 
 message Game{

@@ -173,18 +173,18 @@ var File_search_proto protoreflect.FileDescriptor
 
 const file_search_proto_rawDesc = "" +
 	"\n" +
-	"\fsearch.proto\"]\n" +
+	"\fsearch.proto\x12\bsearchpb\"]\n" +
 	"\x04Game\x12\x1b\n" +
 	"\thome_team\x18\x01 \x01(\tR\bhomeTeam\x12\x1b\n" +
 	"\taway_team\x18\x02 \x01(\tR\bawayTeam\x12\x1b\n" +
-	"\tgame_date\x18\x03 \x01(\tR\bgameDate\"=\n" +
-	"\x11SearchGameRequest\x12(\n" +
-	"\fgame_request\x18\x01 \x01(\v2\x05.GameR\vgameRequest\"1\n" +
-	"\x12SearchGameResponse\x12\x1b\n" +
-	"\x05games\x18\x01 \x03(\v2\x05.GameR\x05games2F\n" +
-	"\rSearchService\x125\n" +
+	"\tgame_date\x18\x03 \x01(\tR\bgameDate\"F\n" +
+	"\x11SearchGameRequest\x121\n" +
+	"\fgame_request\x18\x01 \x01(\v2\x0e.searchpb.GameR\vgameRequest\":\n" +
+	"\x12SearchGameResponse\x12$\n" +
+	"\x05games\x18\x01 \x03(\v2\x0e.searchpb.GameR\x05games2X\n" +
+	"\rSearchService\x12G\n" +
 	"\n" +
-	"SearchGame\x12\x12.SearchGameRequest\x1a\x13.SearchGameResponseB\x15Z\x13search/proto/golangb\x06proto3"
+	"SearchGame\x12\x1b.searchpb.SearchGameRequest\x1a\x1c.searchpb.SearchGameResponseB\x15Z\x13search/proto/golangb\x06proto3"
 
 var (
 	file_search_proto_rawDescOnce sync.Once
@@ -200,15 +200,15 @@ func file_search_proto_rawDescGZIP() []byte {
 
 var file_search_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_search_proto_goTypes = []any{
-	(*Game)(nil),               // 0: Game
-	(*SearchGameRequest)(nil),  // 1: SearchGameRequest
-	(*SearchGameResponse)(nil), // 2: SearchGameResponse
+	(*Game)(nil),               // 0: searchpb.Game
+	(*SearchGameRequest)(nil),  // 1: searchpb.SearchGameRequest
+	(*SearchGameResponse)(nil), // 2: searchpb.SearchGameResponse
 }
 var file_search_proto_depIdxs = []int32{
-	0, // 0: SearchGameRequest.game_request:type_name -> Game
-	0, // 1: SearchGameResponse.games:type_name -> Game
-	1, // 2: SearchService.SearchGame:input_type -> SearchGameRequest
-	2, // 3: SearchService.SearchGame:output_type -> SearchGameResponse
+	0, // 0: searchpb.SearchGameRequest.game_request:type_name -> searchpb.Game
+	0, // 1: searchpb.SearchGameResponse.games:type_name -> searchpb.Game
+	1, // 2: searchpb.SearchService.SearchGame:input_type -> searchpb.SearchGameRequest
+	2, // 3: searchpb.SearchService.SearchGame:output_type -> searchpb.SearchGameResponse
 	3, // [3:4] is the sub-list for method output_type
 	2, // [2:3] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
