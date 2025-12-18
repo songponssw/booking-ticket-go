@@ -15,9 +15,10 @@ generate-gateway:
 		--go-grpc_opt=paths=source_relative \
 		--grpc-gateway_out=grpc-gateway/proto/golang \
 		--grpc-gateway_opt=paths=source_relative \
-		grpc-gateway/proto/grpc-gateway.proto
+		grpc-gateway/proto/grpc_gateway.proto
 
 generate-%:
+	mkdir $*/proto/golang
 	protoc \
 		--proto_path=$*/proto \
 		--go_out=$*/proto/golang \
@@ -25,6 +26,10 @@ generate-%:
 		--go-grpc_out=$*/proto/golang \
 		--go-grpc_opt=paths=source_relative \
 		./$*/proto/$*.proto
+
+
+clean-%:
+	rm -rf $*/proto/golang
 
 
 generate-all: $(addprefix generate-,$(SERVICES))

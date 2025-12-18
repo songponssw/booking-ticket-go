@@ -1,6 +1,6 @@
 syntax = "proto3";
 package searchpb;
-option go_package="search/proto/golang";
+option go_package="search/proto/golang;searchpb";
 
 message Game{
     string home_team = 1;

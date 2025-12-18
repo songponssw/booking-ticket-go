@@ -4,7 +4,7 @@
 // - protoc             v6.30.2
 // source: search.proto
 
-package golang
+package searchpb
 
 import (
 	context "context"

@@ -2,9 +2,9 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.0
 // - protoc             v6.30.2
-// source: grpc-gateway.proto
+// source: grpc_gateway.proto
 
-package golang
+package gatewaypb
 
 import (
 	context "context"
@@ -26,6 +26,8 @@ const (
 // SearchGatewayClient is the client API for SearchGateway service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+//
+// REST gateway service (HTTP → gRPC)
 type SearchGatewayClient interface {
 	SearchGame(ctx context.Context, in *golang.SearchGameRequest, opts ...grpc.CallOption) (*golang.SearchGameResponse, error)
 }
@@ -51,6 +53,8 @@ func (c *searchGatewayClient) SearchGame(ctx context.Context, in *golang.SearchG
 // SearchGatewayServer is the server API for SearchGateway service.
 // All implementations must embed UnimplementedSearchGatewayServer
 // for forward compatibility.
+//
+// REST gateway service (HTTP → gRPC)
 type SearchGatewayServer interface {
 	SearchGame(context.Context, *golang.SearchGameRequest) (*golang.SearchGameResponse, error)
 	mustEmbedUnimplementedSearchGatewayServer()
@@ -118,5 +122,5 @@ var SearchGateway_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "grpc-gateway.proto",
+	Metadata: "grpc_gateway.proto",
 }

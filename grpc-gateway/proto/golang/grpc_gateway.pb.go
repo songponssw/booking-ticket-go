@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        v6.30.2
-// source: grpc-gateway.proto
+// source: grpc_gateway.proto
 
-package golang
+package gatewaypb
 
 import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
@@ -26,10 +26,10 @@ var File_grpc_gateway_proto protoreflect.FileDescriptor
 
 const file_grpc_gateway_proto_rawDesc = "" +
 	"\n" +
-	"\x12grpc-gateway.proto\x12\agateway\x1a\x1cgoogle/api/annotations.proto\x1a\x19search/proto/search.proto2r\n" +
+	"\x12grpc_gateway.proto\x12\agateway\x1a\x1cgoogle/api/annotations.proto\x1a\x19search/proto/search.proto2r\n" +
 	"\rSearchGateway\x12a\n" +
 	"\n" +
-	"SearchGame\x12\x1b.searchpb.SearchGameRequest\x1a\x1c.searchpb.SearchGameResponse\"\x18\x82\xd3\xe4\x93\x02\x12\x12\x10/v1/search/gamesB\x1bZ\x19grpc-gateway/proto/golangb\x06proto3"
+	"SearchGame\x12\x1b.searchpb.SearchGameRequest\x1a\x1c.searchpb.SearchGameResponse\"\x18\x82\xd3\xe4\x93\x02\x12\x12\x10/v1/search/gamesB)Z'app/grpc-gateway/proto/golang;gatewaypbb\x06proto3"
 
 var file_grpc_gateway_proto_goTypes = []any{
 	(*golang.SearchGameRequest)(nil),  // 0: searchpb.SearchGameRequest

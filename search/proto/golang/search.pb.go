@@ -4,7 +4,7 @@
 // 	protoc        v6.30.2
 // source: search.proto
 
-package golang
+package searchpb
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -184,7 +184,7 @@ const file_search_proto_rawDesc = "" +
 	"\x05games\x18\x01 \x03(\v2\x0e.searchpb.GameR\x05games2X\n" +
 	"\rSearchService\x12G\n" +
 	"\n" +
-	"SearchGame\x12\x1b.searchpb.SearchGameRequest\x1a\x1c.searchpb.SearchGameResponseB\x15Z\x13search/proto/golangb\x06proto3"
+	"SearchGame\x12\x1b.searchpb.SearchGameRequest\x1a\x1c.searchpb.SearchGameResponseB\x1eZ\x1csearch/proto/golang;searchpbb\x06proto3"
 
 var (
 	file_search_proto_rawDescOnce sync.Once
