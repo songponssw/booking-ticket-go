@@ -4,13 +4,13 @@ import (
 	"context"
 	"log"
 	"net/http"
-	"time"
+	// "time"
 
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 
-	gatewaypb "grpc-gateway/proto/golang" // generated package
+	// gatewaypb "grpc-gateway/proto/golang" // generated package
 )
 
 func main() {
@@ -26,14 +26,14 @@ func main() {
 		"localhost:50051", // Search gRPC server
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
 		grpc.WithBlock(),
-		grpc.WithTimeout(5*time.Second),
 	)
 	if err != nil {
 		log.Fatalf("failed to connect to gRPC server: %v", err)
 	}
+	defer conn.Close()
 
-	// Register REST handlers
-	err = gatewaypb.RegisterSearchGatewayHandler(
+	// ✅ Register REST handlers for BACKEND service (SearchService)
+	err = searchpb.RegisterSearchServiceHandler(
 		ctx,
 		mux,
 		conn,

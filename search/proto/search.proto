@@ -2,6 +2,9 @@ syntax = "proto3";
 package searchpb;
 option go_package="search/proto/golang;searchpb";
 
+import "google/api/annotations.proto";
+
+
 message Game{
     string home_team = 1;
     string away_team = 2;
@@ -18,5 +21,20 @@ message SearchGameResponse{
 
 
 service SearchService{
-  rpc SearchGame(SearchGameRequest) returns (SearchGameResponse);
+  rpc SearchGame(SearchGameRequest) 
+    returns (SearchGameResponse) {
+      option (google.api.http) = {
+        post: "/v1/search/games"
+        body: "*"
+      };
+    }
 }
+
+/* service SearchGateway { */
+/*   rpc SearchGame(searchpb.SearchGameRequest) */
+/*       returns (searchpb.SearchGameResponse) { */
+/*     option (google.api.http) = { */
+/*       get: "/v1/search/games" */
+/*     }; */
+/*   } */
+/* } */

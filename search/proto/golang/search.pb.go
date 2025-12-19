@@ -7,6 +7,7 @@
 package searchpb
 
 import (
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -173,7 +174,7 @@ var File_search_proto protoreflect.FileDescriptor
 
 const file_search_proto_rawDesc = "" +
 	"\n" +
-	"\fsearch.proto\x12\bsearchpb\"]\n" +
+	"\fsearch.proto\x12\bsearchpb\x1a\x1cgoogle/api/annotations.proto\"]\n" +
 	"\x04Game\x12\x1b\n" +
 	"\thome_team\x18\x01 \x01(\tR\bhomeTeam\x12\x1b\n" +
 	"\taway_team\x18\x02 \x01(\tR\bawayTeam\x12\x1b\n" +
@@ -181,10 +182,10 @@ const file_search_proto_rawDesc = "" +
 	"\x11SearchGameRequest\x121\n" +
 	"\fgame_request\x18\x01 \x01(\v2\x0e.searchpb.GameR\vgameRequest\":\n" +
 	"\x12SearchGameResponse\x12$\n" +
-	"\x05games\x18\x01 \x03(\v2\x0e.searchpb.GameR\x05games2X\n" +
-	"\rSearchService\x12G\n" +
+	"\x05games\x18\x01 \x03(\v2\x0e.searchpb.GameR\x05games2u\n" +
+	"\rSearchService\x12d\n" +
 	"\n" +
-	"SearchGame\x12\x1b.searchpb.SearchGameRequest\x1a\x1c.searchpb.SearchGameResponseB\x1eZ\x1csearch/proto/golang;searchpbb\x06proto3"
+	"SearchGame\x12\x1b.searchpb.SearchGameRequest\x1a\x1c.searchpb.SearchGameResponse\"\x1b\x82\xd3\xe4\x93\x02\x15:\x01*\"\x10/v1/search/gamesB\x1eZ\x1csearch/proto/golang;searchpbb\x06proto3"
 
 var (
 	file_search_proto_rawDescOnce sync.Once
