@@ -1,25 +1,18 @@
 PROTOC := protoc
-PROTO_DIRS := search api_gateway
+SERVICES := search api_gateway
 THIRD_PARTY := third_party
 
-.PHONY: api_gateway search payment order clean
+.PHONY: $(addprefix generate-,$(SERVICES)) $(addprefix clean-,$(SERVICES))
 
-# generate-gateway:
-# 	mkdir -p grpc-gateway/proto/golang
-# 	protoc \
-# 	  -I grpc-gateway/proto \
-# 		-I . \
-# 	  --go_out=grpc-gateway/proto/golang \
-# 		--go_opt=paths=source_relative \
-# 		--go-grpc_out=grpc-gateway/proto/golang \
-# 		--go-grpc_opt=paths=source_relative \
-# 		--grpc-gateway_out=grpc-gateway/proto/golang \
-# 		--grpc-gateway_opt=paths=source_relative \
-# 		grpc-gateway/proto/grpc_gateway.proto
-#
-generate-%:
-	# mkdir $*/proto/golang
-	protoc \
+# Fer bash-completion
+$(foreach s,$(SERVICES),\
+	$(eval generate-$(s): ; @$(MAKE) generate-$(s)-template) \
+	$(eval clean-$(s):    ; @$(MAKE) clean-$(s)-template) \
+)
+
+generate-%-template:
+	mkdir -p $*/proto/golang
+	$(PROTOC) \
 		-I $*/proto \
 		-I $(THIRD_PARTY) \
 		--proto_path=$*/proto \
@@ -29,8 +22,5 @@ generate-%:
 		./$*/proto/$*.proto
 
 
-clean-%:
+clean-%-template:
 	rm -rf $*/proto/golang
-
-
-generate-all: $(addprefix generate-,$(SERVICES))
