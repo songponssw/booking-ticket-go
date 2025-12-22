@@ -1,6 +1,8 @@
+SHELL := /bin/bash
 PROTOC := protoc
 SERVICES := search api_gateway
 THIRD_PARTY := third_party
+DEBUG_DIR := debug
 
 .PHONY: $(addprefix generate-,$(SERVICES)) $(addprefix clean-,$(SERVICES))
 
@@ -24,3 +26,11 @@ generate-%-template:
 
 clean-%-template:
 	rm -rf $*/proto/golang
+
+debug-dev:
+	exec -a debug-search go run search/cmd/grpc/main.go >> $(DEBUG_DIR)/search.log 2>&1 & \
+	exec -a debug-gateway go run api_gateway/cmd/main.go >> $(DEBUG_DIR)/api_gateway.log 2>&1 & \
+	wait
+
+# Make debug-search
+# go run search/cmd/grpc/main.go 2>&1 debug/search.log

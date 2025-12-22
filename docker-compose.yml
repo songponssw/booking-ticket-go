@@ -20,13 +20,12 @@ services:
     stdin_open: true
     tty: true
 
-
   dev-space:
     container_name: dev-space
     image: golang:1.24-alpine
     volumes:
       - ./:/app/
-    entrypoint: ["sh"]
+    entrypoint: ["bash"]
     stdin_open: true
     tty: true
 
