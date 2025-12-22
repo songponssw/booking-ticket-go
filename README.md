@@ -7,7 +7,7 @@
 
 
 ### Project detail:
-- Use data from the (NBA Kaggle)[https://www.kaggle.com/datasets/eoinamoore/historical-nba-data-and-player-box-scores/data?select=LeagueSchedule25_26.csv] dataset to support querying (searching) the NBA 2025–2026 schedule and ticket booking.
+- Use data from the [NBA Kaggle](https://www.kaggle.com/datasets/eoinamoore/historical-nba-data-and-player-box-scores/data?select=LeagueSchedule25_26.csv) dataset to support querying (searching) the NBA 2025–2026 schedule and ticket booking.
 
 ### Tools & Skill:
 - Golang, gRPC, gRPC-gateway, Postgres, SQL, Postman, RESTful API, Makefile, sqlmock
@@ -17,10 +17,10 @@
 ### TODO:
 - [x] Search Game services
 - [x] Deliver starter-kit
-- [] Create service image(Dockerfile)
-- [] Deployment (Build CI/CD, monitoring, logging)
-- [] Booking service(order)
-- ...
+- [ ] Create service image(Dockerfile)
+- [ ] Deployment (Build CI/CD, monitoring, logging)
+- [ ] Booking service(order)
+- [ ] ...
 
 ----
 
@@ -28,12 +28,15 @@
 
 ### Design
 The system starts with a simple architecture in which an API Gateway handles client requests and routes them to individual services, as shown in the architecture diagram.  
+
 The **Search Service** returns NBA games (matches) based on the provided criteria (home team, away team, and game date). These results are queried from a PostgreSQL database.  
+
 The **Order Service** is responsible for booking seats and generating tickets for clients. A **Ticket Service** allows clients to retrieve and view their bookings.  
+
 This architecture is designed to be extensible, and additional modules or services can be added to support the overall ticket-booking workflow.
 
 
-![System Design ver.1](./assets/booking-tickets-system-v1.png)
+![System Design ver.1](/assets/booking-tickets-system-v1.png)
 
 ### Coding
 Each service is treated as an independent module, and `go.work` is used to link them together during development. The project follows **hexagonal architecture**, clearly separating application logic, ports, and adapters.  
