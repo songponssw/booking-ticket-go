@@ -28,7 +28,7 @@ func (r *SearchRepository) Search(
 
 	rows, err := r.db.QueryContext(
 		ctx,
-		`SELECT hometeamname, awayteamname  
+		`SELECT hometeamname, awayteamname, gamedatetimeest  
 		 FROM leagueschedule25_26
 		 WHERE hometeamname ILIKE '%' || $1 || '%'`,
 		query.HomeTeam,
@@ -41,7 +41,7 @@ func (r *SearchRepository) Search(
 	var games []domain.Game
 	for rows.Next() {
 		var g domain.Game
-                if err := rows.Scan(&g.HomeTeam, &g.AwayTeam); err != nil {
+                if err := rows.Scan(&g.HomeTeam, &g.AwayTeam, &g.GameDate); err != nil {
                         return nil, err
                 }
 		games = append(games, g)

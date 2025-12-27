@@ -3,3 +3,11 @@
 signal: interrupt
 2025/12/19 15:51:11 🌐 API Gateway listening on :8080
 signal: interrupt
+2025/12/24 04:49:27 🌐 API Gateway listening on :8080
+signal: interrupt
+go: cannot load module grpc-gateway listed in go.work file: open grpc-gateway/go.mod: no such file or directory
+go: cannot load module grpc-gateway listed in go.work file: open grpc-gateway/go.mod: no such file or directory
+go: cannot load module grpc-gateway listed in go.work file: open grpc-gateway/go.mod: no such file or directory
+2025/12/24 04:57:03 🌐 API Gateway listening on :8080
+signal: interrupt
+2025/12/24 05:00:46 🌐 API Gateway listening on :8080
